@@ -23,7 +23,7 @@ class ErrorHandler
 
     protected function logErrors($message = '', $file = '', $line = '')
     {
-        error_log("[" . date('Y-m-d- H:i:s') . "] Текст ошибки: {$message} | Имя файла: {$file} | Номер строки: {$line}\n====================\n", 3, '/temp/errors.log');
+        error_log("[" . date('Y-m-d- H:i:s') . "] Текст ошибки: {$message} | Имя файла: {$file} | Номер строки: {$line}\n====================\n", 3, ROOT . '/temp/errors.log');
     }
 
     protected function outError($errno, $errstr, $errfile, $errline, $response = 404)
@@ -36,7 +36,7 @@ class ErrorHandler
         if (DEBUG) {
             require WWWW . '/errors/dev.php';
         } else {
-            require WWWW . '/errors/prod/php';
+            require WWWW . '/errors/prod.php';
         }
         die;
     }
